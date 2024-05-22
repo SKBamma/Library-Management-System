@@ -1,0 +1,70 @@
+{
+  "books": [
+    {
+      "id": "_xPPwGDAMgRkF3z5UvtGA",
+      "title": "SD 550",
+      "genre": "React Native",
+      "category": "front end",
+      "authorIDs": [],
+      "publisherId": ""
+    }
+  ],
+  "authors": [
+    {
+      "id": "A001",
+      "name": "John Doe",
+      "phone": "123-456-78903",
+      "email": "john.doe@example.com5"
+    }
+  ],
+  "publishers": [
+    {
+      "id": "P001",
+      "name": "TechBooks Publishing",
+      "phone": "456-789-01230",
+      "email": "contact@techbookspub.com",
+      "address": "123 Tech St, Silicon Valley, CA"
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "C002",
+      "bookId": null,
+      "numberOfCopies": 5,
+      "availableCopies": 5
+    },
+    {
+      "id": "hXmuoPX_Lro2qbO5e6nOd",
+      "bookId": null,
+      "numberOfCopies": 15,
+      "availableCopies": 10
+    }
+  ],
+  "members": [
+    {
+      "id": "V9DXC2BgQhN3NqMWwL0eS",
+      "residentID": "414",
+      "firstname": "John",
+      "lastname": "Smith",
+      "address": "2325 washington Av",
+      "phone": "234-568-9867",
+      "email": "js@gmail.com"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "T001",
+      "bookId": null,
+      "memberId": null,
+      "borrowedDate": "2024-05-01",
+      "returnedDate": "2024-05-15"
+    }
+  ],
+  "users": [
+    {
+      "id": "U001",
+      "name": "john",
+      "email": "johnsmith@miu.edu"
+    }
+  ]
+}
