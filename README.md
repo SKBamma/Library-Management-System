@@ -32,4 +32,3 @@
 
 ## Project Requirement
 1. It is an individual project; therefore your code should be solely your own.
-3. Submit the final and stable version to Github by 10:00 PM the day before the presentation day.
