@@ -32,6 +32,4 @@
 
 ## Project Requirement
 1. It is an individual project; therefore your code should be solely your own.
-2. Each person will have 15 minutes to show off your project with me. You only need to run your application and answer my question. You do not need to make any document like PowerPoint. I will send out the specific time later.
 3. Submit the final and stable version to Github by 10:00 PM the day before the presentation day.
-4. If you have any question, please send me messages on Teams. I will connect with you ASAP from 10:00 AM - 12:00 PM or 1:30 PM - 3:00 PM.
