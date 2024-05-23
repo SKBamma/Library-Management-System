@@ -10,14 +10,27 @@ import GlobalContext from './helper/Context/context';
 import axios from 'axios';
 import MemberScreen from './Screen/sMember';
 import IMember from './types/IMember';
+import Login from './components/Login/Login';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import ASYNC_STORAGE_KEY from './helper/constants';
+import Logout from './components/Login/Logout';
+import Settings from './Screen/sSetings';
 const { Navigator, Screen } = createBottomTabNavigator();
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [authors, setAuthors] = useState<IAuthor[]>([]);
   const [members, setMembers] = useState<IMember[]>([]);
 
   async function loadAuthors() {
     try {
+      //get login inform from local storage
+      const result = await AsyncStorage.getItem(ASYNC_STORAGE_KEY);
+      if (result) {
+        const data = JSON.parse(result);
+        setIsLoggedIn(data.isLoggedIn);
+      }
+      //then load the app 
       const response = await axios.get("http://localhost:5000/authors");
       if (response.status === 200) {
         setAuthors(response.data);
@@ -42,36 +55,51 @@ export default function App() {
     loadMembers();
   }, []);
 
-  return (
-    <GlobalContext.Provider value={{ authors, setAuthors, members, setMembers }}>
+  if (!isLoggedIn) {
+    return <Login setIsLoggedIn={setIsLoggedIn} />;
 
-      <NavigationContainer>
-        <Navigator>
+  } else {
+    return (
+      <GlobalContext.Provider value={{
+        authors, setAuthors, members, setMembers,
+        setIsLoggedIn
+      }}>
 
-          <Screen name='Member' component={MemberScreen}
-            options={{
-              title: 'Member', headerShown: false,
-              tabBarIcon: ({ color }) =>
-                <FontAwesome5 name='users' color={color} size={25} />
-            }}
-          />
+        <NavigationContainer>
+          <Navigator>
 
-          <Screen name='Author' component={AuthorScreen}
-            options={{
-              title: 'Author', headerShown: false,
-              tabBarIcon: ({ color }) =>
-                <FontAwesome5 name='user' color={color} size={25} />
-            }} />
+            <Screen name='Member' component={MemberScreen}
+              options={{
+                title: 'Member', headerShown: false,
+                tabBarIcon: ({ color }) =>
+                  <FontAwesome5 name='users' color={color} size={25} />
+              }}
+            />
+
+            <Screen name='Author' component={AuthorScreen}
+              options={{
+                title: 'Author', headerShown: false,
+                tabBarIcon: ({ color }) =>
+                  <FontAwesome5 name='user' color={color} size={25} />
+              }} />
+
+            <Screen name='settings' component={Settings}
+              options={{
+                title: 'Settings', headerShown: false,
+                tabBarIcon: ({ color }) =>
+                  <FontAwesome5 name='cog' color={color} size={25} />
+              }} />
 
 
+          </Navigator>
 
-        </Navigator>
+        </NavigationContainer>
 
-      </NavigationContainer>
+      </GlobalContext.Provider>
 
-    </GlobalContext.Provider>
+    );
 
-  );
+  }
 
 }
 

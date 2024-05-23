@@ -7,11 +7,13 @@ type IContext = {
     setAuthors: (authors: IAuthor[]) => void,
     members: IMember[],
     setMembers: (members: IMember[]) => void;
+    setIsLoggedIn: (isLoggedIn: boolean) => void;
 };
 const GlobalContext = createContext<IContext>({
     authors: [],
     setAuthors: () => { },
     members: [],
-    setMembers: () => { }
+    setMembers: () => { },
+    setIsLoggedIn: () => { }
 });
 export default GlobalContext;
