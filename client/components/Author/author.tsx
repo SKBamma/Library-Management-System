@@ -3,6 +3,7 @@ import { Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import IAuthor from '../../types/IAuthor';
 import axios from 'axios';
 import GlobalContext from '../../helper/Context/context';
+import { useNavigation } from '@react-navigation/native';
 
 type PropsAuthor = {
     data: IAuthor,
@@ -11,6 +12,7 @@ type PropsAuthor = {
 export default function Author({ data, index }: PropsAuthor) {
     const { id, name, phone, email } = data;
     const { setAuthors, authors } = useContext(GlobalContext);
+    const navigation = useNavigation();
 
     const ondelete = async () => {
         window.alert("Are you sure to delete?");
@@ -26,6 +28,10 @@ export default function Author({ data, index }: PropsAuthor) {
             window.alert("Unable to delete!");
         }
     };
+
+    const navigateToUpdateAuthor = () => {
+        navigation.navigate('edit-author', data);
+    };
     return (
         <SafeAreaView style={styles.container}>
 
@@ -35,7 +41,8 @@ export default function Author({ data, index }: PropsAuthor) {
             <Text style={styles.textName}>Email: {email}</Text>
 
             <View style={styles.viewTouchable}>
-                <Pressable style={styles.touchableButtonUpdate}>
+                <Pressable style={styles.touchableButtonUpdate}
+                    onPress={navigateToUpdateAuthor}>
                     <Text style={styles.textTouchable}>Update</Text>
                 </Pressable>
 

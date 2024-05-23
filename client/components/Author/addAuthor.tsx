@@ -56,7 +56,12 @@ const styles = StyleSheet.create({
     conatiner: {
         flex: 1,
         justifyContent: 'center',
-        margin: 20
+        margin: 40,
+        borderColor: 'red',
+        borderWidth: 2,
+        borderRadius: 20,
+        backgroundColor: 'lightgreen'
+
     },
     textHeader: {
         fontSize: 20,
@@ -76,15 +81,15 @@ const styles = StyleSheet.create({
         marginLeft: "12%"
     },
     button: {
-        position: 'absolute',
-        left: 100,
-        top: 400,
         borderWidth: 1,
         borderColor: "black",
-        borderRadius: 20,
+        borderRadius: 15,
         padding: 10,
-        backgroundColor: 'lightyellow',
-        width: "30%",
+        margin: 10,
+        alignItems: 'center',
+        backgroundColor: 'gold',
+        width: "40%",
+        marginLeft: "30%"
 
     },
     buttonText: {
